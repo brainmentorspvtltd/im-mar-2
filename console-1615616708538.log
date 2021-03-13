@@ -1,0 +1,274 @@
+var a;
+undefined
+typeof a;
+"undefined"
+a = 100;
+100
+typeof a;
+"number"
+a = 10;
+10
+typeof a;
+"number"
+a=1000000;
+1000000
+typeof a;
+"number"
+a=1000.20;
+1000.2
+typeof a;
+"number"
+a=10;
+10
+a = a + 1;
+11
+++a;
+12
+a = 10/0;
+Infinity
+typeof a;
+"number"
+a;
+Infinity
+isFinite(a);
+false
+isFinite(a)?a:0;
+0
+a  = 1000;
+1000
+a - "Amit"
+NaN
+var b;
+undefined
+typeof b;
+"undefined"
+a - b
+NaN
+typeof (a-b)
+"number"
+var c = a-b;
+undefined
+c;
+NaN
+typeof c;
+"number"
+c;
+NaN
+isNaN(c);
+true
+isNaN(c)?0:c;
+0
+var d = "1000";
+undefined
+var e = 1000;
+undefined
+typeof d;
+"string"
+typeof e;
+"number"
+d + e;
+"10001000"
+var f = d + e;
+undefined
+typeof f;
+"string"
+f;
+"10001000"
+100 + "100"
+"100100"
+"100" + 100
+"100100"
+100 + 100
+200
+100 + "100"
+"100100"
+100 - "100"
+0
+100 - undefined
+NaN
+100 - "Amit"
+NaN
+100 * "2"
+200
+100 / "3"
+33.333333333333336
+100 + "100"
+"100100"
+100 + parseInt("100")
+200
+100 + parseFloat("1000.20");
+1100.2
+var w = Number.MAX_SAFE_INTEGER;
+undefined
+w;
+9007199254740991
+++w;
+9007199254740992
+++w;
+9007199254740992
+++w;
+9007199254740992
+typeof w;
+"number"
+var w1 = 9007199254740992n;
+undefined
+typeof w1;
+"bigint"
+var dd = w1 + 9007199254740992n;
+undefined
+typeof dd;
+"bigint"
+dd;
+18014398509481984n
+var d = BigInt("4656456756454654324234234324234253645654645");
+undefined
+typeof d;
+"bigint"
+d;
+4656456756454654324234234324234253645654645n
+d + 4355435;
+VM1701:1 Uncaught TypeError: Cannot mix BigInt and other types, use explicit conversions
+    at <anonymous>:1:3
+(anonymous) @ VM1701:1
+var myName = 'Amit';
+undefined
+typeof myName;
+"string"
+myName = "Amit";
+"Amit"
+typeof myName;
+"string"
+var x = `hgdjfkghdjkfghfkjh
+gdhfkjghdjfhgkjdhfg
+gdfkjhgfjdhgkdf
+ghdfkjghfdg`;
+undefined
+x;
+"hgdjfkghdjkfghfkjh
+gdhfkjghdjfhgkjdhfg
+gdfkjhgfjdhgkdf
+ghdfkjghfdg"
+typeof x;
+"string"
+x;
+"hgdjfkghdjkfghfkjh
+gdhfkjghdjfhgkjdhfg
+gdfkjhgfjdhgkdf
+ghdfkjghfdg"
+var a = 100;
+undefined
+var b = 200;
+undefined
+var c = a + b;
+undefined
+c;
+300
+"A is "+a+" B is "+b+" And C is "+c;
+"A is 100 B is 200 And C is 300"
+`A is ${a} B is ${b} And C is ${c}`;
+"A is 100 B is 200 And C is 300"
+console.log('Hello JS ');
+VM2350:1 Hello JS 
+undefined
+var f = true;
+undefined
+typeof f;
+"boolean"
+f = false;
+false
+typeof f;
+"boolean"
+true + true
+2
+true - false;
+1
+var ff = 1000;
+undefined
+window;
+Window {window: Window, self: Window, document: document, name: "", location: Location, …}
+typeof window;
+"object"
+window.ff;
+1000
+var temp = [21, 22,33,40, 19,21,22];
+undefined
+temp[0];
+21
+temp[1];
+22
+var temp2 = {"delhi":21,"mumbai":22};
+undefined
+temp2["delhi"];
+21
+typeof temp2;
+"object"
+typeof temp;
+"object"
+temp  instanceof Array;
+true
+temp2 instanceof Array;
+false
+temp2 instanceof Object;
+true
+temp instanceof Object;
+true
+typeof Array;
+"function"
+temp = [10,"AMIT",true,[90,"EE"],function(){}];
+(5) [10, "AMIT", true, Array(2), ƒ]
+var name = "Amit";
+undefined
+typeof name;
+"string"
+name.toUpperCase();
+"AMIT"
+name;
+"Amit"
+name.toUp
+undefined
+var d = name.toUpperCase();
+undefined
+d;
+"AMIT"
+name;
+"Amit"
+var price = 10000;
+undefined
+price.toLocaleString('hi-IN');
+"10,000"
+price.toLocaleString('fr-FR');
+"10 000"
+price 
+10000
+price = 10000.200;
+10000.2
+price.toLocaleString('fr-FR');
+"10 000,2"
+price.toLocaleString('hi-IN');
+"10,000.2"
+price;
+10000.2
+var arr = [10,20,30,40];
+undefined
+var f = arr;
+undefined
+f;
+(4) [10, 20, 30, 40]
+arr;
+(4) [10, 20, 30, 40]
+f[0] = 10000;
+10000
+f;
+(4) [10000, 20, 30, 40]
+arr;
+(4) [10000, 20, 30, 40]
+f == arr;
+true
+[]==[]
+false
+var arr = [1,2,5,9,4,3];
+undefined
+arr.sort();
+(6) [1, 2, 3, 4, 5, 9]
+arr;
+(6) [1, 2, 3, 4, 5, 9]

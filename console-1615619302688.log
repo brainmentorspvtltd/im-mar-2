@@ -1,0 +1,72 @@
+var arr = [10,20,30];
+undefined
+arr = null;
+null
+arr;
+null
+typeof arr;
+"object"
+var arr = [10,20,30];
+undefined
+var b = arr;
+undefined
+arr = null;
+null
+arr;
+null
+b;
+(3) [10, 20, 30]
+typeof arr;
+"object"
+arr==b;
+false
+typeof null;
+"object"
+100 + null
+100
+100 + undefined
+NaN
+typeof null;
+"object"
+typeof undefined;
+"undefined"
+null == undefined
+true
+null === undefined;
+false
+10 == "10"
+true
+10==="10"
+false
+var x = 1000;
+undefined
+typeof x;
+"number"
+x.toLocaleString('hi-IN');
+"1,000"
+var d = new Number(1000);
+undefined
+var e = 1000;
+undefined
+d;
+Number {1000}
+e;
+1000
+typeof d;
+"object"
+typeof e;
+"number"
+var a = "Amit";
+undefined
+typeof a;
+"string"
+var b =new String("Amit");
+undefined
+b;
+String {"Amit"}
+typeof b;
+"object"
+a.toUpperCase();
+"AMIT"
+a;
+"Amit"
