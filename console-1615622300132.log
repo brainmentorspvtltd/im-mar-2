@@ -1,0 +1,133 @@
+function add(){
+console.log('I am add ');
+}
+undefined
+add();
+VM5445:2 I am add 
+undefined
+add(1,2);
+VM5445:2 I am add 
+undefined
+add(1,2,3);
+VM5445:2 I am add 
+undefined
+add(1,[2,3],"3");
+VM5445:2 I am add 
+undefined
+console.dir(add);
+VM5635:1 ƒ add()arguments: nullcaller: nulllength: 0name: "add"prototype: {constructor: ƒ}__proto__: ƒ ()[[FunctionLocation]]: VM5445:1[[Scopes]]: Scopes[1]
+undefined
+function add(){
+console.log(arguments.length);
+
+}
+
+undefined
+add(1);
+VM5751:2 1
+undefined
+add();
+VM5751:2 0
+undefined
+add(1,2,3,4,4,5);
+VM5751:2 6
+undefined
+function add(){
+console.log(arguments.length, typeof arguments);
+
+}
+
+undefined
+add(1,2,3,4,4,5);
+VM5911:2 6 "object"
+undefined
+function add(){
+console.log(arguments.length, typeof arguments, arguments instanceof Array);
+
+}
+
+undefined
+add(1,2,3,4,4,5);
+VM5982:2 6 "object" false
+undefined
+function add(){
+//console.log(arguments.length, typeof arguments, arguments instanceof Array);
+var sum = 0;
+for(var i =0;i<arguments.length; i++){
+sum+=arguments[i];
+}
+return sum;
+}
+
+undefined
+add();
+0
+add(1);
+1
+add(1,2);
+3
+add(1,2,3);
+6
+add(1,2,3,4,5,6,7);
+28
+add(1,2,3,"4",5,6,7);
+"64567"
+function add(){
+//console.log(arguments.length, typeof arguments, arguments instanceof Array);
+var sum = 0;
+for(var i =0;i<arguments.length; i++){
+sum+=parseInt(arguments[i]);
+}
+return sum;
+}
+
+undefined
+add(1,2,3,"4",5,6,7);
+28
+parseInt("four");
+NaN
+NaN+ 1000
+NaN
+add(1,2,3,"four",5,6,7);
+NaN
+function add(){
+//console.log(arguments.length, typeof arguments, arguments instanceof Array);
+var sum = 0;
+for(var i =0;i<arguments.length; i++){
+sum+=isNaN(parseInt(arguments[i]))?0:parseInt(arguments[i]);
+}
+return sum;
+}
+
+undefined
+add(1,2,3,"four",5,6,7);
+24
+function three(){
+return 3;
+}
+undefined
+function five(){
+return "5";
+}
+undefined
+//add(1,2,three,"four",five,6,7);
+undefined
+parseInt(five);
+NaN
+add(1,2,three,"four",five,6,7);
+16
+function add(){
+//console.log(arguments.length, typeof arguments, arguments instanceof Array);
+var sum = 0;
+for(var i =0;i<arguments.length; i++){
+if(typeof arguments[i] ==="function"){
+arguments[i] = arguments[i]();
+}
+sum+=isNaN(parseInt(arguments[i]))?0:parseInt(arguments[i]);
+}
+return sum;
+}
+
+undefined
+add(1,2,three,"four",five,6,7);
+24
