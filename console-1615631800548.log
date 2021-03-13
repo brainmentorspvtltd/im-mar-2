@@ -1,0 +1,51 @@
+function show(){
+let a= 100;
+console.log(a);
+if(10>2){
+let a = 200;
+console.log(a);
+}
+let a = 300;
+console.log(a);
+}
+VM254:8 Uncaught SyntaxError: Identifier 'a' has already been declared
+function show(){ // var a = undefined;
+var a= 100; // a = 100;
+console.log(a);
+if(10>2){
+var a = 200; // a = 200;
+console.log(a);
+}
+ var a = 300; // a = 300
+console.log(a);
+}
+undefined
+show();
+VM324:3 100
+VM324:6 200
+VM324:9 300
+undefined
+const MAX = 100;
+undefined
+MAX++;
+VM394:1 Uncaught TypeError: Assignment to constant variable.
+    at <anonymous>:1:4
+(anonymous) @ VM394:1
+const ARR = [10,20,30];
+undefined
+ARR[0] = 1000;
+1000
+ARR;
+(3) [1000, 20, 30]
+ARR = [];
+VM537:1 Uncaught TypeError: Assignment to constant variable.
+    at <anonymous>:1:5
+(anonymous) @ VM537:1
+var f = 10000;
+undefined
+window.f;
+10000
+let w2 = 1000;
+undefined
+window.w2;
+undefined

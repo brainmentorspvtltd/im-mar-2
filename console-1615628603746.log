@@ -1,0 +1,171 @@
+function add(...args){
+console.log(typeof arguments, typeof args);
+console.log(arguments instanceof Array, args instanceof Array);
+}
+undefined
+add();
+VM304:2 object object
+VM304:3 false true
+undefined
+console.dir(add);
+VM372:1 ƒ add(...args)arguments: nullcaller: nulllength: 0name: "add"prototype: {constructor: ƒ}__proto__: ƒ ()[[FunctionLocation]]: VM304:1[[Scopes]]: Scopes[1]
+undefined
+var name = "";
+undefined
+if(name.length==0){
+console.log('Blank Name');
+}
+VM518:2 Blank Name
+undefined
+var age = 0;
+undefined
+if(age==0){}
+undefined
+var att = false;
+undefined
+var r;
+undefined
+if(r){
+console.log('Truthy');
+}
+else{
+    console.log('Falsy');
+}
+VM760:5 Falsy
+undefined
+r=0;
+0
+if(r){
+console.log('Truthy');
+}
+else{
+    console.log('Falsy');
+}
+VM780:5 Falsy
+undefined
+r = '';
+""
+if(r){
+console.log('Truthy');
+}
+else{
+    console.log('Falsy');
+}
+VM805:5 Falsy
+undefined
+r = NaN;
+NaN
+if(r){
+console.log('Truthy');
+}
+else{
+    console.log('Falsy');
+}
+VM832:5 Falsy
+undefined
+r = undefined;
+undefined
+if(r){
+console.log('Truthy');
+}
+else{
+    console.log('Falsy');
+}
+VM862:5 Falsy
+undefined
+r = false;
+false
+if(r){
+console.log('Truthy');
+}
+else{
+    console.log('Falsy');
+}
+VM891:5 Falsy
+undefined
+r = 1;
+1
+if(r){
+console.log('Truthy');
+}
+else{
+    console.log('Falsy');
+}
+VM913:2 Truthy
+undefined
+r = 'Amit';
+"Amit"
+if(r){
+console.log('Truthy');
+}
+else{
+    console.log('Falsy');
+}
+VM944:2 Truthy
+undefined
+r = true;
+true
+if(r){
+console.log('Truthy');
+}
+else{
+    console.log('Falsy');
+}
+VM976:2 Truthy
+undefined
+r = null;
+null
+if(r){
+console.log('Truthy');
+}
+else{
+    console.log('Falsy');
+}
+VM1003:5 Falsy
+undefined
+r = {};
+{}
+if(r){
+console.log('Truthy');
+}
+else{
+    console.log('Falsy');
+}
+VM1028:2 Truthy
+undefined
+function add(x=0, y = 0){
+return x + y;
+}
+undefined
+add();
+0
+add(10);
+10
+add(NaN,100);
+NaN
+function add(x, y ){
+x = x || 0;
+y = y || 0;
+return x + y;
+}
+undefined
+add();
+0
+add(undefined, undefined);
+0
+add(100, undefined);
+100
+add(100,200);
+300
+add(100, NaN);
+100
+add(null, NaN);
+0
+add(10,NaN);
+10
+add('',10)
+10
+add('','');
+0
+add(false, false);
+0

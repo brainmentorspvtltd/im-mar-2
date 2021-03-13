@@ -1,0 +1,214 @@
+var a = 100; // variable expression
+
+var b = function(){
+console.log('Anonymous Function or Function Expression')
+}
+undefined
+typeof b;
+"function"
+typeof a;
+"number"
+b();
+VM797:4 Anonymous Function or Function Expression
+undefined
+// outer function
+function Calc(){ // function defination (global scope window)
+// add nested/ inner function
+// add , sub local scope
+var add = function(x,y){
+    return x + y;
+}
+var sub  = function(x,y){
+    return x - y;
+}
+return [add, sub];
+}
+var arr = Calc();
+undefined
+window.Calc;
+ƒ Calc(){ // function defination (global scope window)
+// add nested/ inner function
+// add , sub local scope 
+var add = function(x,y){
+    return x + y;
+}
+var sub  = function(x,y){
+    return x - y;
+}…
+window.add;
+undefined
+arr;
+(2) [ƒ, ƒ]0: ƒ (x,y)arguments: nullcaller: nulllength: 2name: "add"prototype: {constructor: ƒ}__proto__: ƒ ()[[FunctionLocation]]: VM1142:5[[Scopes]]: Scopes[1]1: ƒ (x,y)length: 2__proto__: Array(0)
+arr[0](10,20);
+30
+arr[1](10,20);
+-10
+// outer function
+function Calc(a,b){ // function defination (global scope window)
+// add nested/ inner function
+// add , sub local scope
+var c = 1000;
+var add = function(x,y){
+    return x + y + a + b + c;
+}
+var sub  = function(x,y){
+    return x - y - a - b - c;
+}
+return [add, sub];
+}
+var arr = Calc();
+undefined
+// outer function
+function Calc(a,b){ // function defination (global scope window)
+// add nested/ inner function
+// add , sub local scope
+var c = 1000;
+var add = function(x,y){
+    return x + y + a + b + c;
+}
+var sub  = function(x,y){
+    return x - y - a - b - c;
+}
+return [add, sub];
+}
+var arr = Calc(10,20);
+undefined
+arr;
+(2) [ƒ, ƒ]0: ƒ (x,y)arguments: nullcaller: nulllength: 2name: "add"prototype: {constructor: ƒ}__proto__: ƒ ()[[FunctionLocation]]: VM1414:6[[Scopes]]: Scopes[2]0: Closure (Calc) {b: 20, a: 10, c: 1000}1: Global {window: Window, self: Window, document: document, name: "", location: Location, …}1: ƒ (x,y)arguments: nullcaller: nulllength: 2name: "sub"prototype: {constructor: ƒ}__proto__: ƒ ()[[FunctionLocation]]: VM1414:9[[Scopes]]: Scopes[2]0: Closure (Calc) {b: 20, a: 10, c: 1000}1: Global {window: Window, self: Window, document: document, name: "", location: Location, …}length: 2__proto__: Array(0)
+arr[0](1,1);
+1032
+arr[1](1,1);
+-1030
+// outer function
+function Calc(a,b){ // function defination (global scope window)
+// add nested/ inner function
+// add , sub local scope
+var c = 1000;
+var add = function(x,y){
+    return x + y + a + b + c;
+}
+var sub  = function(x,y){
+    return x - y - a - b - c;
+}
+return [add, sub];
+}
+var arr = Calc(10,20);
+undefined
+arr;
+(2) [ƒ, ƒ]0: ƒ (x,y)arguments: nullcaller: nulllength: 2name: "add"prototype: {constructor: ƒ}__proto__: ƒ ()[[FunctionLocation]]: VM1534:6[[Scopes]]: Scopes[2]0: Closure (Calc) {b: 20, a: 10, c: 1000}1: Global {window: Window, self: Window, document: document, name: "", location: Location, …}1: ƒ (x,y)length: 2__proto__: Array(0)
+// outer function
+function Calc(a,b){ // function defination (global scope window)
+// add nested/ inner function
+// add , sub local scope
+var c = 1000;
+var add = function(x,y){
+    return x + y + a + b + c;
+}
+var sub  = function(x,y){
+    return x - y - a - b - c;
+}
+return [add, sub];
+}
+var arr = Calc(10,20);
+undefined
+arr;
+(2) [ƒ, ƒ]0: ƒ (x,y)1: ƒ (x,y)length: 2__proto__: Array(0)
+arr[0](10,20);
+1060
+arr[1](10,20);
+-1040
+// outer function
+function Calc(a,b){ // function defination (global scope window)
+// add nested/ inner function
+// add , sub local scope
+var c = 1000;
+var add = function addition(x,y){
+    return x + y + a + b + c;
+}
+var sub  = function subtraction(x,y){
+    return x - y - a - b - c;
+}
+return [add, sub];
+}
+var arr = Calc(10,20);
+undefined
+arr;
+(2) [ƒ, ƒ]0: ƒ addition(x,y)1: ƒ subtraction(x,y)length: 2__proto__: Array(0)
+arr[0].name;
+"addition"
+arr[0](10,20);
+1060
+// outer function
+function Calc(a,b){ // function defination (global scope window)
+// add nested/ inner function
+// add , sub local scope
+var c = 1000;
+var add = function (x,y){
+    return x + y + a + b + c;
+}
+var sub  = function (x,y){
+    return x - y - a - b - c;
+}
+return [add, sub];
+}
+var arr = Calc(10,20);
+undefined
+arr[0].name;
+"add"
+// outer function
+function Calc(a,b){ // function defination (global scope window)
+// add nested/ inner function
+// add , sub local scope
+var c = 1000;
+var add = function (x,y){
+    return x + y + a + b + c;
+}
+var sub  = function (x,y){
+    return x - y - a - b - c;
+}
+return {"addition":add,"subtraction": sub};
+}
+var obj = Calc(10,20);
+undefined
+obj;
+{addition: ƒ, subtraction: ƒ}
+obj.addition(10,20);
+1060
+obj.subtraction(1,2);
+-1031
+obj['addition'](10,2);
+1042
+var obj = {id:1001, name:'Ram',salary:9999};
+undefined
+obj.id;
+1001
+obj["id"]
+1001
+var obj2 = {1:100};
+undefined
+obj2.1;
+VM2203:1 Uncaught SyntaxError: Unexpected number
+obj2[1];
+100
+var obj3 = {"a b":100};
+undefined
+obj3.a b ;
+VM2329:1 Uncaught SyntaxError: Unexpected identifier
+obj3['a b']
+100
+var obj = {"a b":100, "x-y":200};
+undefined
+obj.a b
+VM2475:1 Uncaught SyntaxError: Unexpected identifier
+obj."a b";
+VM2511:1 Uncaught SyntaxError: Unexpected string
+var w = "x-y";
+undefined
+obj.w;
+undefined
+obj["a b"]
+100
+obj["x-y"]
+200
+obj[w]
+200

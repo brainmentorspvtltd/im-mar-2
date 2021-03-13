@@ -1,0 +1,112 @@
+function init(){
+var count = 0;
+return function(){
+++count;
+return count;
+}
+}
+undefined
+var countDown = init();
+undefined
+countDown;
+ƒ (){
+++count;
+return count;
+}
+console.dir(countDown);
+VM465:1 ƒ anonymous()arguments: nullcaller: nulllength: 0name: ""prototype: {constructor: ƒ}__proto__: ƒ ()[[FunctionLocation]]: VM334:3[[Scopes]]: Scopes[2]0: Closure (init) {count: 0}1: Global {window: Window, self: Window, document: document, name: "", location: Location, …}
+undefined
+countDown();
+1
+countDown();
+2
+countDown();
+3
+countDown();
+4
+countDown();
+5
+console.dir(countDown);
+VM516:1 ƒ anonymous()arguments: nullcaller: nulllength: 0name: ""prototype: {constructor: ƒ}__proto__: ƒ ()[[FunctionLocation]]: VM334:3[[Scopes]]: Scopes[2]0: Closure (init) {count: 5}1: Global {window: Window, self: Window, document: document, name: "", location: Location, …}
+undefined
+count;
+VM535:1 Uncaught ReferenceError: count is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM535:1
+var countDown = init();
+undefined
+countDown();
+1
+countDown();
+2
+countDown();
+3
+countDown();
+4
+var e = init();
+undefined
+e();
+1
+e();
+2
+const fn = (function (){
+var count = 0;
+return function(){
+++count;
+return count;
+}
+})();
+undefined
+fn();
+1
+fn();
+2
+fn();
+3
+fn();
+4
+fn();
+5
+function loop(){
+for(let i= 1;i<=10; i++){
+console.log(i);
+}
+}
+undefined
+loop();
+VM882:3 1
+VM882:3 2
+VM882:3 3
+VM882:3 4
+VM882:3 5
+VM882:3 6
+VM882:3 7
+VM882:3 8
+VM882:3 9
+VM882:3 10
+undefined
+function loop(){
+(function(){ // var scope fn level
+for(var i= 1;i<=10; i++){
+console.log(i);
+}
+})();
+console.log(i);
+}
+undefined
+loop();
+VM997:4 1
+VM997:4 2
+VM997:4 3
+VM997:4 4
+VM997:4 5
+VM997:4 6
+VM997:4 7
+VM997:4 8
+VM997:4 9
+VM997:4 10
+VM997:7 Uncaught ReferenceError: i is not defined
+    at loop (<anonymous>:7:13)
+    at <anonymous>:1:1
+loop @ VM997:7
+(anonymous) @ VM1018:1

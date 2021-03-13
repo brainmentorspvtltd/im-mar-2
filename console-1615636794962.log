@@ -1,0 +1,51 @@
+// CountDown // 1 // 2 // 3 // 4 // N
+undefined
+function countDown(){
+var count = 0;
+count++;
+return count;
+}
+
+undefined
+countDown();
+1
+countDown();
+1
+countDown();
+1
+var count = 0;
+function countDown(){
+
+count++;
+return count;
+}
+
+undefined
+countDown();
+1
+countDown();
+2
+countDown();
+3
+countDown();
+4
+count ;
+4
+count = -111111;
+-111111
+countDown();
+-111110
+countDown();
+-111109
+countDown();
+-111108
+countDown();
+-111107
+count = "Hello";
+"Hello"
+countDown();
+NaN
+countDown();
+NaN
+countDown();
+NaN

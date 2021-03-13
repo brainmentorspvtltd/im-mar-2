@@ -1,0 +1,85 @@
+function doWork(num){
+for(let i = 1; i<=1000000; i++){
+for(let j = 1; j<=1000; j++){
+
+}
+}
+return num**3; // exp
+}
+undefined
+doWork(3);
+27
+function doWork(num){
+for(let i = 1; i<=1000000; i++){
+for(let j = 1; j<=10000; j++){
+
+}
+}
+return num**3; // exp
+}
+undefined
+doWork(3);
+27
+doWork(3);
+27
+var cache = {};
+function doWork(num){
+if(cache[num]){
+console.log('Coming from the Cache ',cache[num]);
+return;
+}
+for(let i = 1; i<=1000000; i++){
+for(let j = 1; j<=10000; j++){
+    
+}
+}
+cache[num] = num**3; // {3:27}
+return cache[num]; // exp
+}
+undefined
+cache;
+{}
+doWork(3);
+27
+cache;
+{3: 27}
+doWork(3);
+VM391:4 Coming from the Cache  27
+undefined
+doWork(5);
+125
+doWork(5);
+VM391:4 Coming from the Cache  125
+undefined
+cache;
+{3: 27, 5: 125}
+function order(product){
+    return function(payment){
+            return function (delDetails){
+            return "Product "+product +" Payment "+payment+" Del Details "+delDetails;
+}
+}
+}
+undefined
+order('Mobile')(10000)('Delhi')
+"Product Mobile Payment 10000 Del Details Delhi"
+var t = order('Mobile');
+undefined
+t;
+ƒ (payment){
+            return function (delDetails){
+            return "Product "+product +" Payment "+payment+" Del Details "+delDetails;
+}
+}
+t(10000);
+ƒ (delDetails){
+            return "Product "+product +" Payment "+payment+" Del Details "+delDetails;
+}
+var d = t(10000);
+undefined
+d;
+ƒ (delDetails){
+            return "Product "+product +" Payment "+payment+" Del Details "+delDetails;
+}
+d();
+"Product Mobile Payment 10000 Del Details undefined"

@@ -1,0 +1,27 @@
+var obj = {};
+undefined
+obj.x = 100;
+100
+obj.y = 200;
+200
+obj;
+{x: 100, y: 200}
+delete obj.x;
+true
+obj;
+{y: 200}
+obj.ghsjkghkjdfhk;
+undefined
+function test(){
+//'use strict'
+var r = 1000;
+var r2 = 2000;
+r3 = r + r2;
+}
+undefined
+test();
+undefined
+r3;
+3000
+window.r3;
+3000

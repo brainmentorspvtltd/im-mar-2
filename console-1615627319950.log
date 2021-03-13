@@ -1,0 +1,45 @@
+function add(){
+//console.log(arguments.length, typeof arguments, arguments instanceof Array);
+var sum = 0;
+for(var i =0;i<arguments.length; i++){
+if(typeof arguments[i] ==="function"){
+arguments[i] = arguments[i]();
+}
+sum+=isNaN(parseInt(arguments[i]))?0:parseInt(arguments[i]);
+}
+return sum;
+}
+
+undefined
+function add(...args){
+//console.log(arguments.length, typeof arguments, arguments instanceof Array);
+var sum = 0;
+for(var i =0;i<args.length; i++){
+if(typeof args[i] ==="function"){
+args[i] = args[i]();
+}
+sum+=isNaN(parseInt(args[i]))?0:parseInt(args[i]);
+}
+return sum;
+}
+
+undefined
+add(10,20);
+30
+add(10,"20","three");
+30
+function adder(...a,...b){
+console.log('Adder');
+}
+VM945:1 Uncaught SyntaxError: Rest parameter must be last formal parameter
+function adder(x,y,...b){
+console.log('Adder' , x , y, b);
+}
+undefined
+adder(10,20,90,1000,333);
+VM995:2 Adder 10 20 (3) [90, 1000, 333]
+undefined
+function adder(...b,x,y){
+console.log('Adder' , x , y, b);
+}
+VM1099:1 Uncaught SyntaxError: Rest parameter must be last formal parameter

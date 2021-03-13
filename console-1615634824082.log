@@ -1,0 +1,37 @@
+const add = (x,y)=>x+y;
+undefined
+add(10,20);
+30
+add = 100;
+VM2762:1 Uncaught TypeError: Assignment to constant variable.
+    at <anonymous>:1:5
+(anonymous) @ VM2762:1
+const addition = (a,b)=>{
+    console.log('A is ',a,' B is ',b);
+    return a + b;
+}
+undefined
+typeof addition;
+"function"
+addition(100,200);
+VM2901:2 A is  100  B is  200
+300
+var t = 1000;
+undefined
+console.log("T is "+t);
+VM3075:1 T is 1000
+undefined
+var obj = {id:1001, name:'Amit'};
+undefined
+console.log('Object is '+obj.toString());
+VM3224:1 Object is [object Object]
+undefined
+console.log('Object is '+obj);
+VM3266:1 Object is [object Object]
+undefined
+console.log('Object is ',obj);
+VM3284:1 Object is  {id: 1001, name: "Amit"}
+undefined
+console.log(`Object is ${obj}`);
+VM3356:1 Object is [object Object]
+undefined

@@ -1,0 +1,67 @@
+function adder(...x){
+for(var i = 0; i<x.length; i++){
+console.log(x[i]);
+}
+}
+undefined
+adder(10,20,30);
+VM1259:3 10
+VM1259:3 20
+VM1259:3 30
+undefined
+var arr= [10,20,30];
+undefined
+var arr2 = [90,100,20];
+undefined
+var arr3 = [arr, arr2];
+undefined
+arr3;
+(2) [Array(3), Array(3)]
+var arr4 = [...arr,...arr2];
+undefined
+arr4;
+(6) [10, 20, 30, 90, 100, 20]
+var obj = {id:1001, name:}
+VM1578:1 Uncaught SyntaxError: Unexpected token '}'
+var obj = {id:1001, name:'Amit'};
+undefined
+var obj2 = {city:'Delhi',phone:11111};
+undefined
+var obj3 = {...obj, ...obj2};
+undefined
+obj3;
+{id: 1001, name: "Amit", city: "Delhi", phone: 11111}
+var obj4 = {id:1002};
+undefined
+obj3;
+{id: 1001, name: "Amit", city: "Delhi", phone: 11111}
+var obj5 = {...obj3, ...obj4};
+undefined
+obj5;
+{id: 1002, name: "Amit", city: "Delhi", phone: 11111}
+function add(x,y){
+return x + y;
+}
+undefined
+add(); // add(undefined, undefined)
+NaN
+add(1);
+NaN
+function add(x=0,y=0){
+return x + y;
+}
+undefined
+add(10);
+10
+add();
+0
+add(10,20);
+30
+add(null);
+0
+add('');
+"0"
+add('',10);
+"10"
+add(NaN,10)
+NaN
