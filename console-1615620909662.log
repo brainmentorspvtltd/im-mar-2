@@ -1,0 +1,61 @@
+function show(){
+// define the body of a function
+console.log('I am Show ');
+// return undefined;
+}
+undefined
+show(); // invoke a fn
+VM5002:3 I am Show 
+undefined
+function add(x,y){
+    return x + y;
+}
+undefined
+add(10,20);
+30
+x;
+VM5166:1 Uncaught ReferenceError: x is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM5166:1
+y;
+VM5177:1 Uncaught ReferenceError: y is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM5177:1
+function add(x,y){
+    z =  x + y;
+    return z;
+}
+undefined
+add(10,20);
+30
+z;
+30
+window.z;
+30
+x;
+VM5283:1 Uncaught ReferenceError: x is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM5283:1
+y;
+VM5293:1 Uncaught ReferenceError: y is not defined
+    at <anonymous>:1:1
+(anonymous) @ VM5293:1
+function add(x,y){
+'use strict'     
+z1 =  x + y;
+    return z1;
+}
+undefined
+add(10,20);
+VM5328:3 Uncaught ReferenceError: z1 is not defined
+    at add (<anonymous>:3:4)
+    at <anonymous>:1:1
+add @ VM5328:3
+(anonymous) @ VM5361:1
+'use strict'
+function add(x,y){
+     
+z1 =  x + y;
+    return z1;
+}
+"use strict"
