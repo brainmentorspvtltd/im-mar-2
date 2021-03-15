@@ -1,0 +1,260 @@
+console.log('Hello');
+console.log('Hi');
+VM1986:1 Hello
+VM1986:2 Hi
+undefined
+var a = 100;
+var b = 200;
+var c = a + b;
+console.log(c);
+VM2106:4 300
+undefined
+setTimeout(()=>{
+console.log('I will call after 3 sec ')
+},3000);
+1
+VM2212:2 I will call after 3 sec 
+console.log('Start');
+setTimeout(()=>{
+console.log('I will call after 3 sec ')
+},3000);
+console.log('End ');
+VM2277:1 Start
+VM2277:5 End 
+undefined
+VM2277:3 I will call after 3 sec 
+console.log('Start');
+asyncTask();
+console.log('End ');
+
+function asyncTask(){
+setTimeout(()=>{
+console.log('I will call after 3 sec ')
+},3000);
+}
+VM2367:1 Start
+VM2367:3 End 
+undefined
+VM2367:7 I will call after 3 sec 
+console.log('Start');
+var result = asyncTask(); //
+console.log('End ', result);
+
+function asyncTask(){
+setTimeout(()=>{
+console.log('I will call after 3 sec ');
+return 1000;
+},3000);
+// return undefined;
+}
+VM2439:1 Start
+VM2439:3 End  undefined
+undefined
+VM2439:7 I will call after 3 sec 
+function callback(result){
+    console.log(result);
+}
+console.log('Start');
+asyncTask(callback); //Passing a fn as an argument
+console.log('End ');
+
+function asyncTask(fn){
+setTimeout(()=>{
+console.log('I will call after 3 sec ');
+ fn(1000);
+},3000);
+// return undefined;
+}
+VM2619:4 Start
+VM2619:6 End 
+undefined
+VM2619:10 I will call after 3 sec 
+VM2619:2 1000
+
+console.log('Start');
+// Calling Style like Sync , Interal Behave Async
+var promise = asyncTask(); // Pending Status
+promise.then(data=>console.log(data)).catch(err=>console.log(err));
+console.log('End ', promise);
+
+
+function asyncTask(fn){
+var pr = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+console.log('I will call after 3 sec ');
+ resolve(1000); // fullfilled
+},5000);
+});
+
+// return undefined;
+}
+VM3028:2 Start
+VM3028:5 Uncaught TypeError: Cannot read property 'then' of undefined
+    at <anonymous>:5:9
+(anonymous) @ VM3028:5
+VM3028:12 I will call after 3 sec 
+
+console.log('Start');
+// Calling Style like Sync , Interal Behave Async
+var promise = asyncTask(); // Pending Status
+promise.then(data=>console.log(data)).catch(err=>console.log(err));
+console.log('End ', promise);
+
+
+function asyncTask(){
+var pr = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+console.log('I will call after 3 sec ');
+ resolve(1000); // fullfilled
+},5000);
+});
+return pr;
+// return undefined;
+}
+VM3044:2 Start
+VM3044:6 End  Promise {<pending>}
+undefined
+VM3044:12 I will call after 3 sec 
+VM3044:5 1000
+
+console.log('Start');
+// Calling Style like Sync , Interal Behave Async
+var promise = asyncTask(); // Pending Status
+promise.then(data=>console.log(data)).catch(err=>console.log(err));
+console.log('End ', promise);
+
+
+function asyncTask(){
+var pr = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+console.log('I will call after 3 sec ');
+ //resolve(1000); // fullfilled
+reject('Rejected Here ');
+},5000);
+});
+return pr;
+// return undefined;
+}
+VM3082:2 Start
+VM3082:6 End  Promise {<pending>}
+undefined
+VM3082:12 I will call after 3 sec 
+VM3082:5 Rejected Here 
+function cube(num){
+    var pr = new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+        resolve(num**3);        
+},5000);
+});
+   return pr; 
+   
+}
+undefined
+Promise.all([cube(3), cube(5), cube(7)]).then(data=>console.log(data)).catch(err=>console.log(err));
+Promise {<pending>}
+VM3565:1 (3) [27, 125, 343]
+function cube(num){
+    var pr = new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+        if(num>10){
+            reject('Fail :: Greater than 10');
+}
+        resolve(num**3);        
+},5000);
+});
+   return pr; 
+   
+}
+undefined
+Promise.all([cube(3), cube(5), cube(17)]).then(data=>console.log(data)).catch(err=>console.log(err));
+Promise {<pending>}
+VM3636:1 Fail :: Greater than 10
+Promise.allSettled([cube(3), cube(5), cube(17)]).then(data=>console.log(data)).catch(err=>console.log(err));
+Promise {<pending>}
+VM3656:1 (3) [{…}, {…}, {…}]0: {status: "fulfilled", value: 27}1: {status: "fulfilled", value: 125}2: {status: "rejected", reason: "Fail :: Greater than 10"}length: 3__proto__: Array(0)
+Promise.race([cube(3), cube(5), cube(17)]).then(data=>console.log(data)).catch(err=>console.log(err));
+Promise {<pending>}
+VM3724:1 27
+async function total(){
+let result;
+try{
+result = await cube(3) ;
+result = await cube(result);
+result = await cube(result);
+}
+catch(e){
+console.log(e);
+}
+console.log(result);
+return result ; // result wrap promise then it return
+}
+undefined
+function cube(num){
+    var pr = new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+        //if(num>10){
+          //  reject('Fail :: Greater than 10');
+//}
+        resolve(num**3);        
+},5000);
+});
+   return pr; 
+   
+}
+undefined
+async function total(){
+let result;
+try{
+result = await cube(3) ;
+result = await cube(result);
+result = await cube(result);
+}
+catch(e){
+console.log(e);
+}
+console.log(result);
+return result ; // result wrap promise then it return
+}
+undefined
+total();
+Promise {<pending>}
+VM4054:11 7625597484987
+var p = total();
+undefined
+p;
+Promise {<pending>}
+VM4054:11 7625597484987
+p;
+Promise {<fulfilled>: 7625597484987}
+var pr = fetch('https://cricapi.com/api/matches?apikey=A8zoDoPaQgefmB7KunnSuApSgL73');
+undefined
+var pr = fetch('https://cricapi.com/api/matches?apikey=A8zoDoPaQgefmB7KunnSuApSgL73');
+pr.then(response=>console.log(response)).catch(err=>console.log(err));
+Promise {<pending>}
+VM4423:2 Response {type: "cors", url: "https://cricapi.com/api/matches?apikey=A8zoDoPaQgefmB7KunnSuApSgL73", redirected: false, status: 200, ok: true, …}body: ReadableStreambodyUsed: falseheaders: Headers {}ok: trueredirected: falsestatus: 200statusText: "OK"type: "cors"url: "https://cricapi.com/api/matches?apikey=A8zoDoPaQgefmB7KunnSuApSgL73"__proto__: Response
+var pr = fetch('https://cricapi.com/api/matches?apikey=A8zoDoPaQgefmB7KunnSuApSgL73');
+pr.then(response=>response.json().then(data=>console.log(data)).catch(err=>console.log('INVALID JSON',err)).catch(err=>console.log(err));
+VM4717:2 Uncaught SyntaxError: missing ) after argument list
+var pr = fetch('https://cricapi.com/api/matches?apikey=A8zoDoPaQgefmB7KunnSuApSgL73');
+pr.then(response=>response.json().then(data=>console.log(data)).catch(err=>console.log('INVALID JSON',err))).catch(err=>console.log(err));
+Promise {<pending>}
+VM4735:2 {matches: Array(286), v: "1", ttl: 44, provider: {…}, creditsLeft: 250}creditsLeft: 250matches: Array(286)[0 … 99]0: date: "2021-03-13T00:00:00.000Z"dateTimeGMT: "2021-03-13T23:00:00.000Z"matchStarted: truesquad: falseteam-1: "New South Wales"team-2: "Western Australia"toss_winner_team: "no toss"type: ""unique_id: 1244122__proto__: Object1: {unique_id: 1234990, date: "2021-03-13T00:00:00.000Z", dateTimeGMT: "2021-03-13T21:00:00.000Z", team-1: "Wellington Women", team-2: "Otago Women", …}2: {unique_id: 1234992, date: "2021-03-13T00:00:00.000Z", dateTimeGMT: "2021-03-13T21:00:00.000Z", team-1: "Central Districts Women", team-2: "Northern Districts Women", …}3: {unique_id: 1234991, date: "2021-03-13T00:00:00.000Z", dateTimeGMT: "2021-03-13T21:00:00.000Z", team-1: "Auckland Women", team-2: "Canterbury Women", …}4: {unique_id: 1249607, date: "2021-03-13T00:00:00.000Z", dateTimeGMT: "2021-03-13T23:00:00.000Z", team-1: "Western Australia Women", team-2: "South Australia Women", …}5: {unique_id: 1235424, date: "2021-03-14T00:00:00.000Z", dateTimeGMT: "2021-03-14T08:00:00.000Z", team-1: "North West Women", team-2: "Border Women", …}6: {unique_id: 1235423, date: "2021-03-14T00:00:00.000Z", dateTimeGMT: "2021-03-14T08:00:00.000Z", team-1: "Limpopo Women", team-2: "KwaZulu-Natal Inland Women", …}7: {unique_id: 1235425, date: "2021-03-14T00:00:00.000Z", dateTimeGMT: "2021-03-14T08:00:00.000Z", team-1: "Easterns Women", team-2: "Mpumalanga Women", …}8: {unique_id: 1235422, date: "2021-03-14T00:00:00.000Z", dateTimeGMT: "2021-03-14T08:00:00.000Z", team-1: "Boland Women", team-2: "South Western Districts Women", …}9: {unique_id: 1247038, date: "2021-03-14T00:00:00.000Z", dateTimeGMT: "2021-03-14T14:00:00.000Z", team-1: "Lahore Qalandars", team-2: "Karachi Kings", …}10: {unique_id: 1247037, date: "2021-03-14T00:00:00.000Z", dateTimeGMT: "2021-03-14T09:00:00.000Z", team-1: "Peshawar Zalmi", team-2: "Quetta Gladiators", …}11: {unique_id: 1235357, date: "2021-03-14T00:00:00.000Z", dateTimeGMT: "2021-03-14T07:30:00.000Z", team-1: "Western Province", team-2: "North West", …}12: {unique_id: 1235359, date: "2021-03-14T00:00:00.000Z", dateTimeGMT: "2021-03-14T07:30:00.000Z", team-1: "Mpumalanga", team-2: "South Western Districts", …}13: {unique_id: 1235358, date: "2021-03-14T00:00:00.000Z", dateTimeGMT: "2021-03-14T07:30:00.000Z", team-1: "KwaZulu-Natal", team-2: "Boland", …}14: {unique_id: 1243389, date: "2021-03-14T00:00:00.000Z", dateTimeGMT: "2021-03-14T13:30:00.000Z", team-1: "India", team-2: "England", …}15: {unique_id: 1251430, date: "2021-03-14T00:00:00.000Z", dateTimeGMT: "2021-03-14T03:00:00.000Z", team-1: "Bangladesh Emerging Team", team-2: "Ireland A", …}16: {unique_id: 1250993, date: "2021-03-14T00:00:00.000Z", dateTimeGMT: "2021-03-14T03:30:00.000Z", team-1: "Uttar Pradesh", team-2: "Mumbai", …}17: {unique_id: 1252071, date: "2021-03-14T00:00:00.000Z", dateTimeGMT: "2021-03-14T13:30:00.000Z", team-1: "West Indies", team-2: "Sri Lanka", …}18: {unique_id: 1253170, date: "2021-03-14T00:00:00.000Z", dateTimeGMT: "2021-03-14T08:30:00.000Z", team-1: "Panadura Sports Club", team-2: "Sebastianites Cricket and Athletic Club", …}19: {unique_id: 1253167, date: "2021-03-14T00:00:00.000Z", dateTimeGMT: "2021-03-14T08:30:00.000Z", team-1: "Negombo Cricket Club", team-2: "Kandy Customs Cricket Club", …}20: {unique_id: 1253168, date: "2021-03-14T00:00:00.000Z", dateTimeGMT: "2021-03-14T08:30:00.000Z", team-1: "Galle Cricket Club", team-2: "Nugegoda Sports Welfare Club", …}21: {unique_id: 1253171, date: "2021-03-14T00:00:00.000Z", dateTimeGMT: "2021-03-14T04:30:00.000Z", team-1: "Tamil Union Cricket and Athletic Club", team-2: "Sri Lanka Navy Sports Club", …}22: {unique_id: 1253166, date: "2021-03-14T00:00:00.000Z", dateTimeGMT: "2021-03-14T04:30:00.000Z", team-1: "Colombo Cricket Club", team-2: "Burgher Recreation Club", …}23: {unique_id: 1253169, date: "2021-03-14T00:00:00.000Z", dateTimeGMT: "2021-03-14T04:30:00.000Z", team-1: "Sri Lanka Army Sports Club", team-2: "Saracens Sports Club", …}24: {unique_id: 1253270, date: "2021-03-14T00:00:00.000Z", dateTimeGMT: "2021-03-14T03:30:00.000Z", team-1: "India Women", team-2: "South Africa Women", …}25: {unique_id: 1253507, date: "2021-03-14T00:00:00.000Z", dateTimeGMT: "2021-03-14T13:30:00.000Z", team-1: "TBA", team-2: "Sri Lanka Legends", …}26: {unique_id: 1244504, date: "2021-03-15T00:00:00.000Z", dateTimeGMT: "2021-03-15T00:00:00.000Z", team-1: "Queensland", team-2: "Victoria", …}27: {unique_id: 1247039, date: "2021-03-15T00:00:00.000Z", dateTimeGMT: "2021-03-15T14:00:00.000Z", team-1: "Islamabad United", team-2: "Peshawar Zalmi", …}28: {unique_id: 1253508, date: "2021-03-15T00:00:00.000Z", dateTimeGMT: "2021-03-15T13:30:00.000Z", team-1: "TBA", team-2: "South Africa Legends", …}29: {unique_id: 1235281, date: "2021-03-16T00:00:00.000Z", dateTimeGMT: "2021-03-16T08:00:00.000Z", team-1: "Northern Cape", team-2: "Western Province", …}30: {unique_id: 1235284, date: "2021-03-16T00:00:00.000Z", dateTimeGMT: "2021-03-16T08:00:00.000Z", team-1: "North West", team-2: "South Western Districts", …}31: {unique_id: 1235283, date: "2021-03-16T00:00:00.000Z", dateTimeGMT: "2021-03-16T08:00:00.000Z", team-1: "Free State", team-2: "KwaZulu-Natal", …}32: {unique_id: 1235282, date: "2021-03-16T00:00:00.000Z", dateTimeGMT: "2021-03-16T08:00:00.000Z", team-1: "Northerns", team-2: "South Africa Under-19s", …}33: {unique_id: 1235248, date: "2021-03-16T00:00:00.000Z", dateTimeGMT: "2021-03-16T08:00:00.000Z", team-1: "Warriors", team-2: "Dolphins", …}34: {unique_id: 1235247, date: "2021-03-16T00:00:00.000Z", dateTimeGMT: "2021-03-16T08:00:00.000Z", team-1: "Lions", team-2: "Titans", …}35: {unique_id: 1235246, date: "2021-03-16T00:00:00.000Z", dateTimeGMT: "2021-03-16T08:00:00.000Z", team-1: "Cape Cobras", team-2: "Knights", …}36: {unique_id: 1235465, date: "2021-03-16T00:00:00.000Z", dateTimeGMT: "2021-03-16T08:00:00.000Z", team-1: "Western Province Women", team-2: "Gauteng Women", …}37: {unique_id: 1247040, date: "2021-03-16T00:00:00.000Z", dateTimeGMT: "2021-03-16T14:00:00.000Z", team-1: "Lahore Qalandars", team-2: "Multan Sultans", …}38: {unique_id: 1243390, date: "2021-03-16T00:00:00.000Z", dateTimeGMT: "2021-03-16T13:30:00.000Z", team-1: "India", team-2: "England", …}39: {unique_id: 1251431, date: "2021-03-16T00:00:00.000Z", dateTimeGMT: "2021-03-16T06:30:00.000Z", team-1: "Bangladesh Emerging Team", team-2: "Ireland A", …}40: {unique_id: 1253175, date: "2021-03-16T00:00:00.000Z", dateTimeGMT: "2021-03-16T08:30:00.000Z", team-1: "Nondescripts Cricket Club", team-2: "Kurunegala Youth Cricket Club", …}41: {unique_id: 1253173, date: "2021-03-16T00:00:00.000Z", dateTimeGMT: "2021-03-16T08:30:00.000Z", team-1: "Sri Lanka Army", team-2: "Negombo Cricket Club", …}42: {unique_id: 1253174, date: "2021-03-16T00:00:00.000Z", dateTimeGMT: "2021-03-16T04:30:00.000Z", team-1: "Sinhalese Sports Club", team-2: "Colts Cricket Club", …}43: {unique_id: 1253172, date: "2021-03-16T00:00:00.000Z", dateTimeGMT: "2021-03-16T04:30:00.000Z", team-1: "Colombo Cricket Club", team-2: "Ragama Cricket Club", …}44: {unique_id: 1253509, date: "2021-03-16T00:00:00.000Z", dateTimeGMT: "2021-03-16T13:30:00.000Z", team-1: "TBA", team-2: "South Africa Legends", …}45: {unique_id: 1235466, date: "2021-03-17T00:00:00.000Z", dateTimeGMT: "2021-03-17T08:00:00.000Z", team-1: "Gauteng Women", team-2: "Northerns Women", …}46: {unique_id: 1249615, date: "2021-03-17T00:00:00.000Z", dateTimeGMT: "2021-03-17T23:00:00.000Z", team-1: "Western Australia Women", team-2: "Victoria Women", …}47: {unique_id: 1234923, date: "2021-03-17T00:00:00.000Z", dateTimeGMT: "2021-03-17T21:30:00.000Z", team-1: "Otago", team-2: "Auckland", …}48: {unique_id: 1234922, date: "2021-03-17T00:00:00.000Z", dateTimeGMT: "2021-03-17T21:30:00.000Z", team-1: "Northern Districts", team-2: "Wellington", …}49: {unique_id: 1252058, date: "2021-03-17T00:00:00.000Z", dateTimeGMT: "2021-03-17T10:00:00.000Z", team-1: "Afghanistan", team-2: "Zimbabwe", …}50: {unique_id: 1252072, date: "2021-03-17T00:00:00.000Z", dateTimeGMT: "2021-03-17T14:00:00.000Z", team-1: "West Indies President's XI", team-2: "Sri Lanka", …}51: {unique_id: 1244135, date: "2021-03-17T00:00:00.000Z", dateTimeGMT: "2021-03-17T23:00:00.000Z", team-1: "Tasmania", team-2: "New South Wales", …}52: {unique_id: 1253271, date: "2021-03-17T00:00:00.000Z", dateTimeGMT: "2021-03-17T03:30:00.000Z", team-1: "India Women", team-2: "South Africa Women", …}53: {unique_id: 1253510, date: "2021-03-17T00:00:00.000Z", dateTimeGMT: "2021-03-17T13:30:00.000Z", team-1: "TBA", team-2: "TBA", …}54: {unique_id: 1235467, date: "2021-03-18T00:00:00.000Z", dateTimeGMT: "2021-03-18T08:00:00.000Z", team-1: "Northerns Women", team-2: "Western Province Women", …}55: {unique_id: 1249617, date: "2021-03-18T00:00:00.000Z", dateTimeGMT: "2021-03-18T23:00:00.000Z", team-1: "New South Wales Women", team-2: "Queensland Women", …}56: {unique_id: 1249613, date: "2021-03-18T00:00:00.000Z", dateTimeGMT: "2021-03-18T23:00:00.000Z", team-1: "South Australia Women", team-2: "Tasmania Women", …}57: {unique_id: 1247041, date: "2021-03-18T00:00:00.000Z", dateTimeGMT: "2021-03-18T14:00:00.000Z", team-1: "TBA", team-2: "TBA", …}58: {unique_id: 1234924, date: "2021-03-18T00:00:00.000Z", dateTimeGMT: "2021-03-18T21:30:00.000Z", team-1: "Canterbury", team-2: "Central Districts", …}59: {unique_id: 1235315, date: "2021-03-18T00:00:00.000Z", dateTimeGMT: "2021-03-18T08:00:00.000Z", team-1: "Mpumalanga", team-2: "Northern Cape", …}60: {unique_id: 1235312, date: "2021-03-18T00:00:00.000Z", dateTimeGMT: "2021-03-18T08:00:00.000Z", team-1: "KwaZulu-Natal Inland", team-2: "Northerns", …}61: {unique_id: 1235313, date: "2021-03-18T00:00:00.000Z", dateTimeGMT: "2021-03-18T08:00:00.000Z", team-1: "Free State", team-2: "Gauteng", …}62: {unique_id: 1235314, date: "2021-03-18T00:00:00.000Z", dateTimeGMT: "2021-03-18T08:00:00.000Z", team-1: "Easterns", team-2: "Boland", …}63: {unique_id: 1235310, date: "2021-03-18T00:00:00.000Z", dateTimeGMT: "2021-03-18T08:00:00.000Z", team-1: "Eastern Province", team-2: "South Western Districts", …}64: {unique_id: 1235311, date: "2021-03-18T00:00:00.000Z", dateTimeGMT: "2021-03-18T08:00:00.000Z", team-1: "Border", team-2: "Limpopo", …}65: {unique_id: 1243391, date: "2021-03-18T00:00:00.000Z", dateTimeGMT: "2021-03-18T13:30:00.000Z", team-1: "India", team-2: "England", …}66: {unique_id: 1253176, date: "2021-03-18T00:00:00.000Z", dateTimeGMT: "2021-03-18T04:30:00.000Z", team-1: "TBA", team-2: "TBA", …}67: {unique_id: 1253177, date: "2021-03-18T00:00:00.000Z", dateTimeGMT: "2021-03-18T08:30:00.000Z", team-1: "TBA", team-2: "TBA", …}68: {unique_id: 1253511, date: "2021-03-18T00:00:00.000Z", dateTimeGMT: "2021-03-18T13:30:00.000Z", team-1: "TBA", team-2: "TBA", …}69: {unique_id: 1244510, date: "2021-03-19T00:00:00.000Z", dateTimeGMT: "2021-03-19T23:30:00.000Z", team-1: "Tasmania", team-2: "New South Wales", …}70: {unique_id: 1233976, date: "2021-03-19T00:00:00.000Z", dateTimeGMT: "2021-03-19T22:00:00.000Z", team-1: "New Zealand", team-2: "Bangladesh", …}71: {unique_id: 1249612, date: "2021-03-19T00:00:00.000Z", dateTimeGMT: "2021-03-19T23:00:00.000Z", team-1: "Western Australia Women", team-2: "Victoria Women", …}72: {unique_id: 1247042, date: "2021-03-19T00:00:00.000Z", dateTimeGMT: "2021-03-19T15:00:00.000Z", team-1: "TBA", team-2: "TBA", …}73: {unique_id: 1252059, date: "2021-03-19T00:00:00.000Z", dateTimeGMT: "2021-03-19T10:00:00.000Z", team-1: "Afghanistan", team-2: "Zimbabwe", …}74: {unique_id: 1249614, date: "2021-03-20T00:00:00.000Z", dateTimeGMT: "2021-03-20T23:00:00.000Z", team-1: "New South Wales Women", team-2: "Queensland Women", …}75: {unique_id: 1247043, date: "2021-03-20T00:00:00.000Z", dateTimeGMT: "2021-03-20T14:00:00.000Z", team-1: "TBA", team-2: "TBA", …}76: {unique_id: 1243392, date: "2021-03-20T00:00:00.000Z", dateTimeGMT: "2021-03-20T13:30:00.000Z", team-1: "India", team-2: "England", …}77: {unique_id: 1252060, date: "2021-03-20T00:00:00.000Z", dateTimeGMT: "2021-03-20T10:00:00.000Z", team-1: "Afghanistan", team-2: "Zimbabwe", …}78: {unique_id: 1244139, date: "2021-03-20T00:00:00.000Z", dateTimeGMT: "2021-03-20T00:00:00.000Z", team-1: "Queensland", team-2: "Victoria", …}79: {unique_id: 1253178, date: "2021-03-20T00:00:00.000Z", dateTimeGMT: "2021-03-20T08:30:00.000Z", team-1: "TBA", team-2: "TBA", …}80: {unique_id: 1253272, date: "2021-03-20T00:00:00.000Z", dateTimeGMT: "2021-03-20T13:30:00.000Z", team-1: "India Women", team-2: "South Africa Women", …}81: {unique_id: 1217142, date: "2021-03-21T00:00:00.000Z", dateTimeGMT: "2021-03-21T13:30:00.000Z", team-1: "TBA", team-2: "TBA", …}82: {unique_id: 1235335, date: "2021-03-21T00:00:00.000Z", dateTimeGMT: "2021-03-21T07:30:00.000Z", team-1: "Northern Cape", team-2: "Northerns", …}83: {unique_id: 1235337, date: "2021-03-21T00:00:00.000Z", dateTimeGMT: "2021-03-21T07:30:00.000Z", team-1: "North West", team-2: "Eastern Province", …}84: {unique_id: 1235338, date: "2021-03-21T00:00:00.000Z", dateTimeGMT: "2021-03-21T07:30:00.000Z", team-1: "Gauteng", team-2: "Mpumalanga", …}85: {unique_id: 1235336, date: "2021-03-21T00:00:00.000Z", dateTimeGMT: "2021-03-21T07:30:00.000Z", team-1: "Western Province", team-2: "South Africa Under-19s", …}86: {unique_id: 1235468, date: "2021-03-21T00:00:00.000Z", dateTimeGMT: "2021-03-21T08:00:00.000Z", team-1: "Gauteng Women", team-2: "Western Province Women", …}87: {unique_id: 1249616, date: "2021-03-21T00:00:00.000Z", dateTimeGMT: "2021-03-21T03:30:00.000Z", team-1: "South Australia Women", team-2: "Australian Capital Territory Women", …}88: {unique_id: 1235365, date: "2021-03-21T00:00:00.000Z", dateTimeGMT: "2021-03-21T07:30:00.000Z", team-1: "Mpumalanga", team-2: "Northern Cape", …}89: {unique_id: 1235362, date: "2021-03-21T00:00:00.000Z", dateTimeGMT: "2021-03-21T07:30:00.000Z", team-1: "KwaZulu-Natal Inland", team-2: "Northerns", …}90: {unique_id: 1235363, date: "2021-03-21T00:00:00.000Z", dateTimeGMT: "2021-03-21T07:30:00.000Z", team-1: "Free State", team-2: "Gauteng", …}91: {unique_id: 1235364, date: "2021-03-21T00:00:00.000Z", dateTimeGMT: "2021-03-21T07:30:00.000Z", team-1: "Easterns", team-2: "Boland", …}92: {unique_id: 1235360, date: "2021-03-21T00:00:00.000Z", dateTimeGMT: "2021-03-21T07:30:00.000Z", team-1: "Eastern Province", team-2: "South Western Districts", …}93: {unique_id: 1235361, date: "2021-03-21T00:00:00.000Z", dateTimeGMT: "2021-03-21T07:30:00.000Z", team-1: "Border", team-2: "Limpopo", …}94: {unique_id: 1252073, date: "2021-03-21T00:00:00.000Z", dateTimeGMT: "2021-03-21T14:00:00.000Z", team-1: "West Indies", team-2: "Sri Lanka", …}95: {unique_id: 1253273, date: "2021-03-21T00:00:00.000Z", dateTimeGMT: "2021-03-21T13:30:00.000Z", team-1: "India Women", team-2: "South Africa Women", …}96: {unique_id: 1235339, date: "2021-03-22T00:00:00.000Z", dateTimeGMT: "2021-03-22T07:30:00.000Z", team-1: "Northerns", team-2: "Western Province", …}97: {unique_id: 1235340, date: "2021-03-22T00:00:00.000Z", dateTimeGMT: "2021-03-22T07:30:00.000Z", team-1: "South Africa Under-19s", team-2: "Northern Cape", …}98: {unique_id: 1235341, date: "2021-03-22T00:00:00.000Z", dateTimeGMT: "2021-03-22T07:30:00.000Z", team-1: "Eastern Province", team-2: "Gauteng", …}99: {unique_id: 1235342, date: "2021-03-22T00:00:00.000Z", dateTimeGMT: "2021-03-22T07:30:00.000Z", team-1: "Mpumalanga", team-2: "North West", …}[100 … 199][200 … 285]length: 286__proto__: Array(0)provider: {source: "Various", url: "https://cricapi.com/", pubDate: "2021-03-15T12:27:07.816Z"}ttl: 44v: "1"__proto__: Object
+XMLHttpRequest
+ƒ XMLHttpRequest() { [native code] }
+var xmlHttpRequest  = new XMLHttpRequest();
+undefined
+xmlHttpRequest.onreadystatechange = function(){
+if(this.readyState==4 && this.status == 200){
+console.log(this.responseText);
+}
+}
+ƒ (){
+if(this.readyState==4 && this.status == 200){
+console.log(this.responseText);
+}
+}
+xmlHttpRequest.open('GET','https://cricapi.com/api/matches?apikey=A8zoDoPaQgefmB7KunnSuApSgL73',true);
+undefined
+xmlHttpRequest.send(null);
+undefined
+VM5180:3 {"matches":[{"unique_id":1244122,"date":"2021-03-13T00:00:00.000Z","dateTimeGMT":"2021-03-13T23:00:00.000Z","team-1":"New South Wales","team-2":"Western Australia","toss_winner_team":"no toss","squad":false,"matchStarted":true,"type":""},{"unique_id":1234990,"date":"2021-03-13T00:00:00.000Z","dateTimeGMT":"2021-03-13T21:00:00.000Z","team-1":"Wellington Women","team-2":"Otago Women","toss_winner_team":"Wellington Women","winner_team":"Wellington Women","squad":false,"matchStarted":true,"type":""},{"unique_id":1234992,"date":"2021-03-13T00:00:00.000Z","dateTimeGMT":"2021-03-13T21:00:00.000Z","team-1":"Central Districts Women","team-2":"Northern Districts Women","toss_winner_team":"Northern Districts Women","winner_team":"Central Districts Women","squad":false,"matchStarted":true,"type":""},{"unique_id":1234991,"date":"2021-03-13T00:00:00.000Z","dateTimeGMT":"2021-03-13T21:00:00.000Z","team-1":"Auckland Women","team-2":"Canterbury Women","toss_winner_team":"Auckland Women","winner_team":"Auckland Women","squad":false,"matchStarted":true,"type":""},{"unique_id":1249607,"date":"2021-03-13T00:00:00.000Z","dateTimeGMT":"2021-03-13T23:00:00.000Z","team-1":"Western Australia Women","team-2":"South Australia Women","squad":true,"toss_winner_team":"South Australia Women","winner_team":"South Australia Women","matchStarted":true,"type":""},{"unique_id":1235424,"date":"2021-03-14T00:00:00.000Z","dateTimeGMT":"2021-03-14T08:00:00.000Z","team-1":"North West Women","team-2":"Border Women","type":"Twenty20","squad":false,"matchStarted":true},{"unique_id":1235423,"date":"2021-03-14T00:00:00.000Z","dateTimeGMT":"2021-03-14T08:00:00.000Z","team-1":"Limpopo Women","team-2":"KwaZulu-Natal Inland Women","type":"Twenty20","squad":false,"matchStarted":true},{"unique_id":1235425,"date":"2021-03-14T00:00:00.000Z","dateTimeGMT":"2021-03-14T08:00:00.000Z","team-1":"Easterns Women","team-2":"Mpumalanga Women","type":"Twenty20","squad":false,"matchStarted":true},{"unique_id":1235422,"date":"2021-03-14T00:00:00.000Z","dateTimeGMT":"2021-03-14T08:00:00.000Z","team-1":"Boland Women","team-2":"South Western Districts Women","type":"Twenty20","squad":false,"matchStarted":true},{"unique_id":1247038,"date":"2021-03-14T00:00:00.000Z","dateTimeGMT":"2021-03-14T14:00:00.000Z","team-1":"Lahore Qalandars","team-2":"Karachi Kings","toss_winner_team":"no toss","squad":true,"matchStarted":true,"type":""},{"unique_id":1247037,"date":"2021-03-14T00:00:00.000Z","dateTimeGMT":"2021-03-14T09:00:00.000Z","team-1":"Peshawar Zalmi","team-2":"Quetta Gladiators","toss_winner_team":"no toss","squad":true,"matchStarted":true,"type":""},{"unique_id":1235357,"date":"2021-03-14T00:00:00.000Z","dateTimeGMT":"2021-03-14T07:30:00.000Z","team-1":"Western Province","team-2":"North West","squad":false,"matchStarted":true,"type":""},{"unique_id":1235359,"date":"2021-03-14T00:00:00.000Z","dateTimeGMT":"2021-03-14T07:30:00.000Z","team-1":"Mpumalanga","team-2":"South Western Districts","squad":false,"matchStarted":true,"type":""},{"unique_id":1235358,"date":"2021-03-14T00:00:00.000Z","dateTimeGMT":"2021-03-14T07:30:00.000Z","team-1":"KwaZulu-Natal","team-2":"Boland","squad":false,"matchStarted":true,"type":""},{"unique_id":1243389,"date":"2021-03-14T00:00:00.000Z","dateTimeGMT":"2021-03-14T13:30:00.000Z","team-1":"India","team-2":"England","type":"Twenty20","squad":true,"toss_winner_team":"India","winner_team":"India","matchStarted":true},{"unique_id":1251430,"date":"2021-03-14T00:00:00.000Z","dateTimeGMT":"2021-03-14T03:00:00.000Z","team-1":"Bangladesh Emerging Team","team-2":"Ireland A","type":"ODI","toss_winner_team":"Ireland A","winner_team":"Bangladesh Emerging Team","squad":false,"matchStarted":true},{"unique_id":1250993,"date":"2021-03-14T00:00:00.000Z","dateTimeGMT":"2021-03-14T03:30:00.000Z","team-1":"Uttar Pradesh","team-2":"Mumbai","toss_winner_team":"Uttar Pradesh","winner_team":"Mumbai","squad":false,"matchStarted":true,"type":""},{"unique_id":1252071,"date":"2021-03-14T00:00:00.000Z","dateTimeGMT":"2021-03-14T13:30:00.000Z","team-1":"West Indies","team-2":"Sri Lanka","type":"ODI","squad":true,"toss_winner_team":"West Indies","winner_team":"West Indies","matchStarted":true},{"unique_id":1253170,"date":"2021-03-14T00:00:00.000Z","dateTimeGMT":"2021-03-14T08:30:00.000Z","team-1":"Panadura Sports Club","team-2":"Sebastianites Cricket and Athletic Club","type":"ODI","toss_winner_team":"Panadura Sports Club","winner_team":"Panadura Sports Club","squad":false,"matchStarted":true},{"unique_id":1253167,"date":"2021-03-14T00:00:00.000Z","dateTimeGMT":"2021-03-14T08:30:00.000Z","team-1":"Negombo Cricket Club","team-2":"Kandy Customs Cricket Club","type":"ODI","toss_winner_team":"Negombo Cricket Club","winner_team":"Negombo Cricket Club","squad":false,"matchStarted":true},{"unique_id":1253168,"date":"2021-03-14T00:00:00.000Z","dateTimeGMT":"2021-03-14T08:30:00.000Z","team-1":"Galle Cricket Club","team-2":"Nugegoda Sports Welfare Club","type":"ODI","toss_winner_team":"Nugegod
