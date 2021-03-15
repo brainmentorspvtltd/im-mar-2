@@ -1,0 +1,26 @@
+function Person(name, age, city){
+    // this {}
+    this.name = name;
+    this.age = age;
+    this.city = city;
+}
+Person.prototype.disp = function(){
+console.log(`Name ${this.name} Age ${this.age} City ${this.city}`);
+}
+function Employee(id, salary, bonus, name, age, city){
+Person.call(this, name, age, city);
+this.id = id;
+this.salary= salary;
+this.bonus = bonus;
+}
+Employee.prototype.__proto__ = Person.prototype;
+Employee.prototype.print = function(){
+//Person.prototype.disp.call(this);
+this.disp();
+console.log(`Id ${this.id} Salary ${this.salary} Bonus ${this.bonus}`);
+}
+var ram = new Employee(1001, 9999,900,'Ram',21,'Delhi');
+ram.print();
+VM22:8 Name Ram Age 21 City Delhi
+VM22:20 Id 1001 Salary 9999 Bonus 900
+undefined

@@ -1,0 +1,33 @@
+function whoAmI(age, salary, city){
+console.log(" I am ",this.name, age, salary, city);
+}
+undefined
+var obj = {name:'Tim'};
+undefined
+var fn = whoAmI.bind(obj);
+undefined
+typeof fn;
+"function"
+fn;
+ƒ whoAmI(age, salary, city){
+console.log(" I am ",this.name, age, salary, city);
+}
+fn(21, 8888,'Delhi');
+VM3142:2  I am  Tim 21 8888 Delhi
+undefined
+fn(21, 8888,'Delhi');
+VM3142:2  I am  Tim 21 8888 Delhi
+undefined
+fn(21, 8888,'Delhi');
+VM3142:2  I am  Tim 21 8888 Delhi
+undefined
+fn(21, 8888,'Delhi');
+VM3142:2  I am  Tim 21 8888 Delhi
+undefined
+whoAmI.call(obj, 21, 9991, 'Mumbai') ; 
+VM3142:2  I am  Tim 21 9991 Mumbai
+undefined
+whoAmI.bind(obj);
+ƒ whoAmI(age, salary, city){
+console.log(" I am ",this.name, age, salary, city);
+}

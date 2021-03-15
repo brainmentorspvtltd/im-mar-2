@@ -1,0 +1,100 @@
+class Person{
+constructor(name, age, city){
+this.name = name;
+this.age = age;
+this.city =city;
+}
+// Person.prototype.disp = function(){}
+disp(){
+console.log(`Name ${this.name} Age ${this.age} City ${this.city}`);
+}
+}
+
+// Employee.prototype.__proto__ = Person.prototype
+class Employee extends Person{
+constructor(id, salary, bonus, name, age, city){
+    super(name, age, city);
+    this.id = id;
+    this.salary = salary;
+    this.bonus = bonus;
+}
+
+//Employee.prototype.print = function(){}
+print(){
+    super.disp();
+    console.log(`Id ${this.id} Salary ${this.salary} Bonus ${this.bonus}`);
+}
+}
+undefined
+typeof Person;
+"function"
+typeof Employee;
+"function"
+Employee.prototype
+Person {constructor: ƒ, print: ƒ}
+Employee.prototype.__proto__
+{constructor: ƒ, disp: ƒ}
+Employee.prototype.__proto__==Person.prototype;
+true
+var ram = new Employee(1001, 9999,900, 'Ram',21,'Delhi');
+undefined
+ram;
+Employee {name: "Ram", age: 21, city: "Delhi", id: 1001, salary: 9999, …}
+ram.print();
+VM928:9 Name Ram Age 21 City Delhi
+VM928:25 Id 1001 Salary 9999 Bonus 900
+undefined
+class A{
+show(){
+
+}
+
+}
+undefined
+if(10>2){
+A.prototype.disp = function(){}
+}
+ƒ (){}
+A.prototype
+{disp: ƒ, constructor: ƒ, show: ƒ}
+delete A.prototype.show;
+true
+A.prototype
+{disp: ƒ, constructor: ƒ}
+class B{
+static show(){
+console.log("SHow ");
+}
+}
+undefined
+B.show();
+VM1526:3 SHow 
+undefined
+typeof B;
+"function"
+console.dir(B);
+VM1617:1 class Barguments: (...)caller: (...)length: 0name: "B"prototype: {constructor: ƒ}show: ƒ show()__proto__: ƒ ()[[FunctionLocation]]: VM1526:1[[Scopes]]: Scopes[2]
+undefined
+function D(x){
+this. x = x ;
+
+}
+undefined
+D.print = function(){
+    console.log("I am like a Static ");
+}
+ƒ (){
+    console.log("I am like a Static ");
+}
+D.print();
+VM1802:2 I am like a Static 
+undefined
+B.show();
+VM1526:3 SHow 
+undefined
+class B1{
+#disp(){
+    console.log('Disp ');
+}
+}
+undefined

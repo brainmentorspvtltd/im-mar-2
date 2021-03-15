@@ -1,0 +1,97 @@
+function Person(name, age, city){
+    // this {}
+    this.name = name;
+    this.age = age;
+    this.city = city;
+}
+Person.prototype.disp = function(){
+console.log(`Name ${this.name} Age ${this.age} City ${this.city}`);
+}
+function Employee(id, salary, bonus, name, age, city){
+Person.call(this, name, age, city);
+this.id = id;
+this.salary= salary;
+this.bonus = bonus;
+}
+Employee.prototype.print = function(){
+Person.prototype.disp.call(this);
+console.log(`Id ${this.id} Salary ${this.salary} Bonus ${this.bonus}`);
+}
+var ram = new Employee(1001, 9999,900,'Ram',21,'Delhi');
+ram.print();
+VM4384:8 Name Ram Age 21 City Delhi
+VM4384:18 Id 1001 Salary 9999 Bonus 900
+undefined
+Employee.prototype
+{print: ƒ, constructor: ƒ}print: ƒ ()constructor: ƒ Employee(id, salary, bonus, name, age, city)__proto__: constructor: ƒ Object()hasOwnProperty: ƒ hasOwnProperty()isPrototypeOf: ƒ isPrototypeOf()propertyIsEnumerable: ƒ propertyIsEnumerable()toLocaleString: ƒ toLocaleString()toString: ƒ toString()valueOf: ƒ valueOf()__defineGetter__: ƒ __defineGetter__()__defineSetter__: ƒ __defineSetter__()__lookupGetter__: ƒ __lookupGetter__()__lookupSetter__: ƒ __lookupSetter__()get __proto__: ƒ __proto__()set __proto__: ƒ __proto__()
+Employee.prototype.__proto__ == Object.prototype
+true
+Employee.prototype.__proto__ = Person.prototype
+{disp: ƒ, constructor: ƒ}
+Employee.prototype.__proto__ == Person.prototype
+true
+Person.prototype.__proto__ == Object.prototype;
+true
+function Person(name, age, city){
+    // this {}
+    this.name = name;
+    this.age = age;
+    this.city = city;
+}
+Person.prototype.disp = function(){
+console.log(`Name ${this.name} Age ${this.age} City ${this.city}`);
+}
+function Employee(id, salary, bonus, name, age, city){
+Person.call(this, name, age, city);
+this.id = id;
+this.salary= salary;
+this.bonus = bonus;
+}
+Employee.prototype.print = function(){
+//Person.prototype.disp.call(this);
+this.disp();
+console.log(`Id ${this.id} Salary ${this.salary} Bonus ${this.bonus}`);
+}
+var ram = new Employee(1001, 9999,900,'Ram',21,'Delhi');
+ram.print();
+VM4731:18 Uncaught TypeError: this.disp is not a function
+    at Employee.print (<anonymous>:18:6)
+    at <anonymous>:22:5
+Employee.print @ VM4731:18
+(anonymous) @ VM4731:22
+function Person(name, age, city){
+    // this {}
+    this.name = name;
+    this.age = age;
+    this.city = city;
+}
+Person.prototype.disp = function(){
+console.log(`Name ${this.name} Age ${this.age} City ${this.city}`);
+}
+function Employee(id, salary, bonus, name, age, city){
+Person.call(this, name, age, city);
+this.id = id;
+this.salary= salary;
+this.bonus = bonus;
+}
+Employee.prototype.__proto__ = Person.prototype;
+Employee.prototype.print = function(){
+//Person.prototype.disp.call(this);
+this.disp();
+console.log(`Id ${this.id} Salary ${this.salary} Bonus ${this.bonus}`);
+}
+var ram = new Employee(1001, 9999,900,'Ram',21,'Delhi');
+ram.print();
+VM4792:8 Name Ram Age 21 City Delhi
+VM4792:20 Id 1001 Salary 9999 Bonus 900
+undefined
+ram;
+Employee {name: "Ram", age: 21, city: "Delhi", id: 1001, salary: 9999, …}age: 21bonus: 900city: "Delhi"id: 1001name: "Ram"salary: 9999__proto__: Personprint: ƒ ()arguments: nullcaller: nulllength: 0name: ""prototype: {constructor: ƒ}__proto__: ƒ ()[[FunctionLocation]]: VM4792:17[[Scopes]]: Scopes[1]constructor: ƒ Employee(id, salary, bonus, name, age, city)__proto__: disp: ƒ ()constructor: ƒ Person(name, age, city)__proto__: Object
+ram.print();
+VM4792:8 Name Ram Age 21 City Delhi
+VM4792:20 Id 1001 Salary 9999 Bonus 900
+undefined
+ram.xyz();
+VM4901:1 Uncaught TypeError: ram.xyz is not a function
+    at <anonymous>:1:5
+(anonymous) @ VM4901:1
