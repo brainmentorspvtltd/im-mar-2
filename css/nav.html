@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+        #main-navigation > ul > li {
+            display: inline-block;
+            background-color: lightslategray;
+            width: 15%;
+            text-align: center;
+            position: relative;
+        }
+        #main-navigation > ul > li a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 0px;
+        }
+        #main-navigation > ul > li a:hover {
+            background-color: red;
+        }
+        #main-navigation > ul > li.dropdown:after {
+            content: "";
+            border: 5px solid #fff;
+            border-color: white transparent transparent;
+            position: absolute;
+            top: 15px;
+            right: 30px;
+        }
+        #main-navigation .dropdown-menu {
+            position: absolute;
+            background-color: darkred;
+            width: 100%;
+            text-align: center;
+            display: none;
+        }
+        #main-navigation ul li:hover .dropdown-menu {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Navigation Menu</h1>
+
+    <div id="main-navigation">
+        <ul>
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li class="dropdown">
+                <a href="#">Men</a>
+                <div class="dropdown-menu">
+                    <ul>
+                        <li>
+                            <a href="#">Cricket</a>
+                        </li>
+                        <li>
+                            <a href="#">Hockey</a>
+                        </li>
+                        <li>
+                            <a href="#">Chess</a>
+                        </li>
+                        <li>
+                            <a href="#">Soccer</a>
+                        </li>
+                        <li>
+                            <a href="#">Tennis</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#">Women</a>
+                <div class="dropdown-menu">
+                    <ul>
+                        <li>
+                            <a href="#">Cricket</a>
+                        </li>
+                        <li>
+                            <a href="#">Hockey</a>
+                        </li>
+                        <li>
+                            <a href="#">Chess</a>
+                        </li>
+                        <li>
+                            <a href="#">Soccer</a>
+                        </li>
+                        <li>
+                            <a href="#">Tennis</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#">Sport</a>
+                <div class="dropdown-menu">
+                    <ul>
+                        <li>
+                            <a href="#">Cricket</a>
+                        </li>
+                        <li>
+                            <a href="#">Hockey</a>
+                        </li>
+                        <li>
+                            <a href="#">Chess</a>
+                        </li>
+                        <li>
+                            <a href="#">Soccer</a>
+                        </li>
+                        <li>
+                            <a href="#">Tennis</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#">Electronics</a>
+                <div class="dropdown-menu">
+                    <ul>
+                        <li>
+                            <a href="#">Cricket</a>
+                        </li>
+                        <li>
+                            <a href="#">Hockey</a>
+                        </li>
+                        <li>
+                            <a href="#">Chess</a>
+                        </li>
+                        <li>
+                            <a href="#">Soccer</a>
+                        </li>
+                        <li>
+                            <a href="#">Tennis</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="#">Furniture</a>
+            </li>
+        </ul>
+    </div>
+    
+</body>
+</html>
