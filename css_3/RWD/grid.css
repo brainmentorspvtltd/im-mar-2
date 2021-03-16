@@ -1,0 +1,60 @@
+#header {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 10% 75% 10%;
+    grid-template-areas: "logo nav login"
+                         "logo search login";
+}
+
+.logo {
+    grid-area: logo;
+    border: 1px solid red;
+}
+.logo img {
+    width: 100%;
+}
+#nav {
+    grid-area: nav;
+    border: 1px solid blue;
+    margin-bottom: 10px;
+}
+.search {
+    grid-area: search;
+    border: 1px solid green;
+}
+.login {
+    grid-area: login;
+    border: 1px solid red;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* ********************************* */
+
+.row {
+    display: grid;
+    /* grid-template-columns: 20% 45% 25%; */
+    grid-template-columns: 25% 25% 25% 25%;
+    justify-content: space-evenly;
+}
+
+.col {
+    background-color: lightsteelblue;
+    padding: 10px;
+    border: 1px solid red;
+    margin-bottom: 20px;
+}
+
+.col-1 {
+    /* grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 3;    */
+    grid-column: 1/4;
+    grid-row: 1/3;
+}
