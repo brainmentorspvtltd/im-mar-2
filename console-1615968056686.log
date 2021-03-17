@@ -1,0 +1,48 @@
+var exports = {
+App(){
+console.log('I am App');
+}
+}
+undefined
+exports;
+{App: ƒ}
+typeof exports;
+"object"
+var e = exports;
+undefined
+e.App();
+VM92:3 I am App
+undefined
+var {App} = exports;
+undefined
+App;
+ƒ App(){
+console.log('I am App');
+}
+App();
+VM92:3 I am App
+undefined
+var exports = {
+MAX : 100,
+App(){
+console.log('I am App');
+}
+}
+undefined
+exports.MAX;
+100
+exports.App();
+VM277:4 I am App
+undefined
+var f = exports ;
+undefined
+f.App
+ƒ App(){
+console.log('I am App');
+}
+f.MAX
+100
+var {MAX} = exports;
+undefined
+MAX
+100

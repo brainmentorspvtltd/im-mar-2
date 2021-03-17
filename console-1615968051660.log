@@ -1,0 +1,14 @@
+var a = 100;
+undefined
+function show(){
+var x = 100;
+}
+
+show();
+undefined
+delete window.a;
+false
+a = 'Amit';
+"Amit"
+a;
+"Amit"
